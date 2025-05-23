@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        // Si tu veux définir d'autres variables globales plus tard
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -29,4 +25,3 @@ pipeline {
         }
     }
 }
-
