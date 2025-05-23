@@ -1,13 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/romain656/tp-devops.git'
-            }
-        }
+    environment {
+        // Si tu veux définir d'autres variables globales plus tard
+    }
 
+    stages {
         stage('Build') {
             steps {
                 echo "Étape de build (à personnaliser selon ton projet)"
@@ -31,3 +29,4 @@ pipeline {
         }
     }
 }
+
