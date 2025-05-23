@@ -11,7 +11,7 @@ pipeline {
         stage('Analyse SonarQube') {
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
-                    withSonarQubeEnv('test-sonar') {
+                    withSonarQubeEnv('SonarQubeServer') {
                         sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
                     }
                 }
