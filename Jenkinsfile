@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        SONAR_TOKEN = credentials('sqa_bc23f71f502e5743c0517eae120363850706e0cb')
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -20,8 +16,10 @@ pipeline {
 
         stage('Analyse SonarQube') {
             steps {
-                withSonarQubeEnv('test-sonar') {
-                    sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
+                withCredentials([string(credentialsId: 'sqa_bc23f71f502e5743c0517eae120363850706e0cb', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv('test-sonar') {
+                        sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
+                    }
                 }
             }
         }
