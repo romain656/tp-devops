@@ -11,8 +11,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQubeServer') {
-                        sh 'echo "Pas de pom.xml – analyse Sonar désactivée pour ce projet."
-
+                        sh "echo 'Pas de pom.xml – analyse Sonar désactivée pour ce projet.'"
                     }
                 }
             }
