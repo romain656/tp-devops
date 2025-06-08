@@ -1,8 +1,5 @@
 pipeline {
     agent any
-tools {
-  maven 'Maven 3.9.6'
-}
     stages {
         stage('Build') {
             steps {
@@ -14,7 +11,7 @@ tools {
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQubeServer') {
-                        sh 'mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
+                        sh 'echo "Pas de pom.xml – analyse Sonar désactivée pour ce projet."
 
                     }
                 }
